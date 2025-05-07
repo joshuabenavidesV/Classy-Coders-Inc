@@ -13,6 +13,10 @@ class SalesPerson extends Employee  {
     makeSale(amount){
         return this.#totalSales += amount
     }
+
+    findClient(client) {
+        return this.clients.find((item) => (item === client));
+    }
     
 }
 
