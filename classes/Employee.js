@@ -1,7 +1,9 @@
 class Employee {
     #salary;
     #isHired;
+    static allEmployees = [];
     constructor(name, position, salary, isHired = true){
+        Employee.allEmployees.push(this)
         this.name = name;
         this.position = position;
         this.#salary = salary;
@@ -28,6 +30,16 @@ class Employee {
         else {
             throw new Error (`Command was not hire or fire`);
         }
+    }
+
+    static getEmployees() {
+        console.log(Employee.allEmployees)
+        return Employee.allEmployees;
+    }
+
+    static getTotalPayroll() {
+        // console.log(Employee.allEmployees.reduce((acc, m) => (acc + m.salary), 0))
+        return Employee.allEmployees.reduce((acc, m) => (acc + m.getSalary()), 0)
     }
     
 }
